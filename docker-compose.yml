@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_LOGGER_LEVEL=info
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    # TODO: Replace with actual backend image/service
+    image: placeholder-backend:latest
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
