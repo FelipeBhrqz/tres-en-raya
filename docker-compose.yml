@@ -1,25 +1,21 @@
 version: '3.8'
 
 services:
-  frontend:
-    build: .
+  backend:
+    build: ../backend
     ports:
-      - "8501:8501"
-    volumes:
-      - .:/app
-    environment:
-      - STREAMLIT_SERVER_HEADLESS=true
-      - STREAMLIT_LOGGER_LEVEL=info
-    depends_on:
-      - backend
+      - "8000:8000"
     networks:
       - app-network
 
-  backend:
-    # TODO: Replace with actual backend image/service
-    image: placeholder-backend:latest
+  frontend:
+    build: ../frontend
     ports:
-      - "8000:8000"
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
     networks:
       - app-network
 
