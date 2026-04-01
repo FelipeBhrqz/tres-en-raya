@@ -1,6 +1,6 @@
 # tres-en-raya
 
-
+Por: Felipe Bohórquez, Liam Huang, Andres Lanchimba
 Proyecto simple de Tres en Raya dividido en tres bloques:
 
 1. frontend
